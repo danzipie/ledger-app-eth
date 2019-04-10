@@ -246,6 +246,9 @@ SDK_SOURCE_PATH  += lib_blewbxx lib_blewbxx_impl
 SDK_SOURCE_PATH  += lib_ux
 endif
 
+print: all
+	echo $(APP_LOAD_PARAMS) > python_command.txt
+
 load: all
 	python -m ledgerblue.loadApp $(APP_LOAD_PARAMS)
 
