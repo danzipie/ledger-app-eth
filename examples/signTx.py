@@ -58,8 +58,7 @@ parser.add_argument('--startgas', help="startgas", default='21000', type=int)
 parser.add_argument('--amount', help="Amount to send in ether", required=True)
 parser.add_argument('--to', help="Destination address", type=str, required=True)
 parser.add_argument('--path', help="BIP 32 path to sign with")
-parser.add_argument('--data', help="Data to add, hex encoded")
-parser.add_argument('--chain', help="Chain ID, hex encoded")
+parser.add_argument('--data', help="Data to add, int encoded")
 args = parser.parse_args()
 
 if args.path == None:
@@ -69,9 +68,6 @@ if args.data == None:
     args.data = b""
 else:
     args.data = decode_hex(args.data[2:])
-
-if args.chain is not None:
-    CHAIN_ID = int(args.chain)
 
 amount = Decimal(args.amount) * 10**18
 
